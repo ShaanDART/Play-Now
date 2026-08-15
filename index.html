@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SHAANDART</title>
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  background:#000;
+  overflow:hidden;
+  font-family:Arial,sans-serif;
+}
+
+#welcomeScreen{
+  position:fixed;
+  width:100%;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:#000;
+  z-index:10;
+}
+
+#welcomeScreen img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+#flashText{
+  position:fixed;
+  top:100px;
+  width:100%;
+  padding:0 15px;
+  text-align:center;
+  color:#b8860b;
+  font-size:22px;
+  font-weight:bold;
+  z-index:40;
+  animation:flash 1s infinite;
+  text-shadow:0 0 12px rgba(184,134,11,.9);
+}
+
+@keyframes flash{
+  0%{opacity:1;}
+  50%{opacity:.2;}
+  100%{opacity:1;}
+}
+
+#videoScreen{
+  position:fixed;
+  width:100%;
+  height:100vh;
+  display:none;
+  justify-content:center;
+  align-items:center;
+  background:#000;
+  z-index:5;
+}
+
+#introVideo{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  background:#000;
+}
+
+#buttonPanel{
+  position:fixed;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  z-index:60;
+  display:none;
+  width:min(360px,88vw);
+  flex-direction:column;
+  gap:14px;
+}
+
+.actionButton{
+  width:100%;
+  padding:15px 22px;
+  border:none;
+  border-radius:50px;
+  font-size:17px;
+  font-weight:bold;
+  cursor:pointer;
+  transition:.25s ease;
+}
+
+.introButton{
+  background:linear-gradient(90deg,#d4af37,#ffcc00);
+  color:#000;
+  box-shadow:0 0 25px rgba(255,204,0,.65);
+}
+
+.depositButton{
+  background:linear-gradient(90deg,#8f6b16,#d4af37);
+  color:#000;
+  box-shadow:0 0 18px rgba(212,175,55,.45);
+}
+
+.contactButton{
+  background:#111;
+  color:#d4af37;
+  border:2px solid #d4af37;
+  box-shadow:0 0 16px rgba(212,175,55,.3);
+}
+
+.skipButton{
+  background:#fff;
+  color:#000;
+  box-shadow:0 0 15px rgba(255,255,255,.4);
+}
+
+.actionButton:hover{
+  transform:scale(1.03);
+}
+
+.actionButton:active{
+  transform:scale(.98);
+}
+
+@media(max-width:600px){
+  #flashText{
+    top:70px;
+    font-size:18px;
+  }
+
+  #buttonPanel{
+    width:min(330px,88vw);
+    gap:12px;
+  }
+
+  .actionButton{
+    font-size:16px;
+    padding:14px 18px;
+  }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div id="flashText">
+  One of the Trusted Exchange for Decades with 100% withdrawal processing records
+</div>
+
+<div id="welcomeScreen">
+  <img src="welcome.jpg" alt="Welcome">
+</div>
+
+<div id="videoScreen">
+  <video id="introVideo" playsinline>
+    <source src="video.mp4" type="video/mp4">
+  </video>
+</div>
+
+<div id="buttonPanel">
+
+  <button id="playButton" class="actionButton introButton">
+    ▶ Click for ShaanDART Intro
+  </button>
+
+  <button id="depositButton" class="actionButton depositButton" type="button">
+    💳 Deposit Here
+  </button>
+
+  <button id="contactButton" class="actionButton contactButton">
+    💬 Contact Us
+  </button>
+
+  <button id="skipButton" class="actionButton skipButton">
+    ➜ Skip &amp; Visit Website
+  </button>
+
+</div>
+
+<script>
+
+const video =
+  document.getElementById("introVideo");
+
+const playButton =
+  document.getElementById("playButton");
+
+const depositButton =
+  document.getElementById("depositButton");
+
+const contactButton =
+  document.getElementById("contactButton");
+
+
+/* Deposit Here */
+
+depositButton.addEventListener("click", () => {
+
+  window.location.assign(
+    "https://razorpay.me/@nayaninternational9771"
+  );
+
+});
+
+
+const skipButton =
+  document.getElementById("skipButton");
+
+const buttonPanel =
+  document.getElementById("buttonPanel");
+
+const flashText =
+  document.getElementById("flashText");
+
+const welcomeScreen =
+  document.getElementById("welcomeScreen");
+
+const videoScreen =
+  document.getElementById("videoScreen");
+
+
+/* Welcome screen: 3 seconds */
+
+setTimeout(() => {
+
+  welcomeScreen.style.display = "none";
+  flashText.style.display = "none";
+  videoScreen.style.display = "flex";
+  buttonPanel.style.display = "flex";
+
+},3000);
+
+
+/* Play Intro */
+
+playButton.addEventListener("click",() => {
+
+  buttonPanel.style.display = "none";
+  flashText.style.display = "none";
+
+  video.play().catch(error => {
+    console.log(
+      "Video playback could not start:",
+      error
+    );
+  });
+
+});
+
+
+/* Contact Us */
+
+contactButton.addEventListener("click",() => {
+
+  window.location.href =
+    "https://wa.me/917088816552";
+
+});
+
+
+/* Skip & Visit Website */
+
+skipButton.addEventListener("click",() => {
+
+  window.location.href =
+    "https://playexch9.com";
+
+});
+
+
+/* Redirect after video ends */
+
+video.addEventListener("ended",() => {
+
+  window.location.href =
+    "https://playexch9.com/sport/allgame/Games";
+
+});
+
+</script>
+
+</body>
+
+</html>
